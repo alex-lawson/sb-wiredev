@@ -1,0 +1,39 @@
+{
+  "objectName" : "not",
+  "rarity" : "Common",
+  "objectType" : "wire",
+  "description" : "The output is on when the input is off, and off when the input is on.",
+  "shortdescription" : "NOT Gate",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : "100",
+  "scannable" : false,
+  "printable" : "false",
+
+  "inventoryIcon" : "not.png:default.1",
+  "orientations" : [
+    {
+      "image" : "not.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/logic/logic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "not.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inboundNodes" : [ [-1, 0] ],
+  "outboundNodes" : [ [1, 0] ],
+
+  "gates" : 1,
+  "truthtable" : [ true, false ]
+}

@@ -1,0 +1,39 @@
+{
+  "objectName" : "or",
+  "rarity" : "Common",
+  "objectType" : "wire",
+  "description" : "The output is on when either of the inputs is on.",
+  "shortdescription" : "OR Gate",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : "100",
+  "scannable" : false,
+  "printable" : "false",
+
+  "inventoryIcon" : "or.png:default.1",
+  "orientations" : [
+    {
+      "image" : "or.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/logic/logic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "or.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inboundNodes" : [ [-1, -1], [-1, 1] ],
+  "outboundNodes" : [ [1, 0] ],
+
+  "gates" : 2,
+  "truthtable" : [ [ false, true ], [ true, true ] ]
+}
