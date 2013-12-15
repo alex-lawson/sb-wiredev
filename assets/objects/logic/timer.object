@@ -6,9 +6,9 @@
   "shortdescription" : "Timer",
   "race" : "generic",
   "category" : "wire",
-  "price" : "200",
+  "price" : "500",
   "scannable" : false,
-  "printable" : "false",
+  "printable" : false,
 
   "inventoryIcon" : "timer.png:default.1",
   "orientations" : [

@@ -1,0 +1,50 @@
+{
+  "objectName" : "wiretable",
+  "rarity" : "Common",
+  "objectType" : "wire",
+  "printable" : false,
+  "description" : "A nice little bench for all your wiring projects.",
+  "shortdescription" : "Wiring Station",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : "300",
+
+  "inventoryIcon" : "wiretableicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "wiretable.png:<color>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "wiretable.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "wiretable.animation",
+
+  "animationParts" : {
+    "station" : "wiretable.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inboundNodes" : [ [0, 0], [3, 0] ],
+
+  //TODO: unlock these using other tiers/items?
+  "learnBlueprintsOnPickup" : [
+    "and",
+    "not",
+    "or",
+    "xor",
+    "timer",
+    "dlatch",
+    "bulb",
+    "alarm",
+    "smallbackgroundbutton",
+    "smallbackgroundswitch",
+    "pressureplate",
+    "lightsensor"
+  ]
+}

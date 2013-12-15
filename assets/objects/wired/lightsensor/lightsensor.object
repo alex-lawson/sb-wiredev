@@ -2,12 +2,13 @@
   "objectName" : "lightsensor",
   "objectType" : "wire",
   "rarity" : "Common",
-  "category" : "light",
-  "printable" : false,
-  "price" : 500,
-  "description" : "Monitors the light level at a location. Activates the bottom node when there's dim light and the top node when there's bright light.",
+  "description" : "Activates the bottom node in dim light and the top node in bright light.",
   "shortdescription" : "Light Sensor",
   "race" : "generic",
+  "category" : "wire",
+  "price" : "1000",
+  "scannable" : false,
+  "printable" : false,
 
   "inventoryIcon" : "lightsensoricon.png",
 

@@ -3,7 +3,7 @@
     { "item" : "copperbar", "count" : 1 }
   ],
   "output" : {
-    "item" : "dlatch",
+    "item" : "alarm",
     "count" : 1
   },
   "groups" : [ "wire" ]

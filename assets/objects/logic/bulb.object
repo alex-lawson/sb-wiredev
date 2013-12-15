@@ -8,7 +8,7 @@
   "category" : "wire",
   "price" : "100",
   "scannable" : false,
-  "printable" : "false",
+  "printable" : false,
 
   "inventoryIcon" : "bulb.png:default.1",
   "orientations" : [

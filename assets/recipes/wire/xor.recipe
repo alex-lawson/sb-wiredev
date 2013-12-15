@@ -1,11 +1,10 @@
 {
   "input" : [
-    { "item" : "ironbar", "count" : 1 },
-    { "item" : "money", "count" : 20 }
+    { "item" : "copperbar", "count" : 1 }
   ],
   "output" : {
     "item" : "xor",
     "count" : 1
   },
-  "groups" : [ "logic101", "mod" ]
+  "groups" : [ "wire" ]
 }
