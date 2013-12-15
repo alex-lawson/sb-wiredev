@@ -1,0 +1,48 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "sensorState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "low" : {
+            "frames" : 1
+          },
+          "high" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "sensor" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "sensorState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+            "low" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.low"
+              }
+            },
+            "high" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.high"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

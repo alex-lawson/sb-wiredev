@@ -2,7 +2,7 @@
   "objectName" : "dlatch",
   "rarity" : "Common",
   "objectType" : "wire",
-  "description" : "When the top input is on, the bottom input stores the memory state to be output.",
+  "description" : "When the top input is on, the bottom input sets the value for the output.",
   "shortdescription" : "Memory Cell",
   "race" : "generic",
   "category" : "wire",
