@@ -1,0 +1,35 @@
+{
+  "objectName" : "trapdoor",
+  "rarity" : "Common",
+  "objectType" : "wire",
+  "description" : "Drops open when powered.",
+  "shortdescription" : "Trap Door",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : "300",
+  "scannable" : false,
+  "printable" : false,
+
+  "inventoryIcon" : "trapdooricon.png",
+  "orientations" : [
+    {
+      "image" : "trapdoor.png:<color>.closed.3",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [0, 1], [1, 1], [2, 1], [3, 1]],
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/trapdoor/trapdoor.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "trapdoor.animation",
+
+  "animationParts" : {
+    "door" : "trapdoor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inboundNodes" : [ [0, 0] ]
+}

@@ -35,8 +35,8 @@
   "timeout" : 0.5,
 
   //detection area specified as rectangle
-  "detectArea" : [1.6, 0.35]
-  //"detectAreaOffset" : [0.2, 0]
+  "detectArea" : [1.6, 0.35],
+  "detectAreaOffset" : [0.2, 0]
 
   //detection area specified as radius
   //"detectArea" : 2,

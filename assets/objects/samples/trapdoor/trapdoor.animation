@@ -1,0 +1,45 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "doorState" : {
+        "default" : "closed",
+        "states" : {
+          "closed" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "mode" : "end"
+          },
+          "open" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "mode" : "end"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "door" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "doorState" : {
+            "closed" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.closed.<frame>"
+              }
+            },
+
+            "open" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.open.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
