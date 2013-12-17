@@ -11,8 +11,6 @@ end
 function main(args)
   local sample = world.lightLevel(object.position())
 
-  world.logInfo(sample)
-
   if sample >= self.detectThresholdHigh then
     object.setOutboundNodeLevel(1, true)
     object.setAnimationState("sensorState", "high")

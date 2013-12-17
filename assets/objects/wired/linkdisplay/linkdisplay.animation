@@ -61,7 +61,8 @@
     "parts" : {
       "digits" : {
         "properties" : {
-          "centered" : false
+          "centered" : false,
+          "flip" : false
         },
 
         "partStates" : {
@@ -126,7 +127,8 @@
       },
       "display" : {
         "properties" : {
-          "centered" : false
+          "centered" : false,
+          "flip" : false
         },
 
         "partStates" : {

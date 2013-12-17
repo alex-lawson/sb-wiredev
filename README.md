@@ -24,3 +24,17 @@ Outstanding Needs
 - race-specific descriptions?
 - determine 'complete' vs 'prototype' object structure (e.g. lightsensor is a full object with its own scripts, pressureplate is built on the motiondetector prototype)
 - more complete crafting interface configuration?
+
+
+Bugs (?)
+---
+
+- defining a 'spaces' instead of 'spaceScan' for a wired object orientation prevents proper wire attachment. works when both properties are defined but 'spaceScan' seems to override 'spaces'
+
+Wish List
+---
+
+- method to call scripts or api functions on player by id
+- method to get id of objects connected by wire nodes
+- method to destroy projectiles by id (can this currently be done?)
+- argument passed to init() to determine whether the object is being previewed or placed

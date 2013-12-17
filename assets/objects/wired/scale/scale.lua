@@ -21,6 +21,9 @@ end
 
 function onDetect(entityId)
   if entityId then
+    world.callScriptedEntity(entityId, "entity.heal", 1)
+    world.callScriptedEntity(entityId, "player.heal", 1)
+
     local sample = math.floor(world.entityHealth(entityId)[2])
     send(sample)
 
