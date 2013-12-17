@@ -36,6 +36,39 @@
           },
           "9" : {
             "frames" : 1
+          },
+          "flipped.off" : {
+            "frames" : 1
+          },
+          "flipped.0" : {
+            "frames" : 1
+          },
+          "flipped.1" : {
+            "frames" : 1
+          },
+          "flipped.2" : {
+            "frames" : 1
+          },
+          "flipped.3" : {
+            "frames" : 1
+          },
+          "flipped.4" : {
+            "frames" : 1
+          },
+          "flipped.5" : {
+            "frames" : 1
+          },
+          "flipped.6" : {
+            "frames" : 1
+          },
+          "flipped.7" : {
+            "frames" : 1
+          },
+          "flipped.8" : {
+            "frames" : 1
+          },
+          "flipped.9" : {
+            "frames" : 1
           }
         }
       },
@@ -61,8 +94,7 @@
     "parts" : {
       "digits" : {
         "properties" : {
-          "centered" : false,
-          "flip" : false
+          "centered" : false
         },
 
         "partStates" : {
@@ -121,14 +153,68 @@
               "properties" : {
                 "image" : "<partImage>:<color>.9"
               }
+            },
+            "flipped.off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.off"
+              }
+            },
+            "flipped.0" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.0"
+              }
+            },
+            "flipped.1" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.1"
+              }
+            },
+            "flipped.2" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.2"
+              }
+            },
+            "flipped.3" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.3"
+              }
+            },
+            "flipped.4" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.4"
+              }
+            },
+            "flipped.5" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.5"
+              }
+            },
+            "flipped.6" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.6"
+              }
+            },
+            "flipped.7" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.7"
+              }
+            },
+            "flipped.8" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.8"
+              }
+            },
+            "flipped.9" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.9"
+              }
             }
           }
         }
       },
       "display" : {
         "properties" : {
-          "centered" : false,
-          "flip" : false
+          "centered" : false
         },
 
         "partStates" : {

@@ -110,16 +110,28 @@ function updateLinkAnimationState()
   if storage.connectedRight and storage.connectedLeft then
     object.setAnimationState("linkState", "both")
   elseif not storage.connectedRight and storage.connectedLeft then
-    object.setAnimationState("linkState", "left")
+    if object.direction() == 1 then
+      object.setAnimationState("linkState", "left")
+    else
+      object.setAnimationState("linkState", "right")
+    end
   elseif storage.connectedRight and not storage.connectedLeft then
-    object.setAnimationState("linkState", "right")
+    if object.direction() == 1 then
+      object.setAnimationState("linkState", "right")
+    else
+      object.setAnimationState("linkState", "left")
+    end
   else
     object.setAnimationState("linkState", "none")
   end
 end
 
 function updateCountAnimationState()
-  object.setAnimationState("counterState", storage.countAnimationState)
+  if object.direction() == 1 then
+    object.setAnimationState("counterState", storage.countAnimationState)
+  else
+    object.setAnimationState("counterState", "flipped."..storage.countAnimationState)
+  end
 end
 
 function main()

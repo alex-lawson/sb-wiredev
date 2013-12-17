@@ -1,10 +1,10 @@
 {
   "frameGrid" : {
     "size" : [16, 16],
-    "dimensions" : [6, 2],
+    "dimensions" : [11, 2],
     "names" : [
-      [ "default.0", "default.1", "default.2", "default.3", "default.4", "default.off"],
-      ["default.5", "default.6", "default.7", "default.8", "default.9", "default.unused"]
+      [ "default.off", "default.0", "default.1", "default.2", "default.3", "default.4", "default.5", "default.6", "default.7", "default.8", "default.9"],
+      [ "default.flipped.off", "default.flipped.9", "default.flipped.8", "default.flipped.7", "default.flipped.6", "default.flipped.5", "default.flipped.4", "default.flipped.3", "default.flipped.2", "default.flipped.1", "default.flipped.0"]
     ]
   },
 

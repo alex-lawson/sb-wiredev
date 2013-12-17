@@ -11,13 +11,6 @@ end
 function main(args)
   local sample = world.lightLevel(object.position())
 
-  if sample >= self.detectThresholdHigh then
-    object.setOutboundNodeLevel(1, true)
-    object.setAnimationState("sensorState", "high")
-  else
-    object.setOutboundNodeLevel(1, false)
-  end
-
   if sample >= self.detectThresholdLow then
     object.setOutboundNodeLevel(0, true)
     object.setAnimationState("sensorState", "low")
@@ -30,5 +23,12 @@ function main(args)
 
     -- TEMPORARY WIRELESS COMMUNICATION WITH LINKDISPLAY
     send(0)
+  end
+
+  if sample >= self.detectThresholdHigh then
+    object.setOutboundNodeLevel(1, true)
+    object.setAnimationState("sensorState", "high")
+  else
+    object.setOutboundNodeLevel(1, false)
   end
 end
