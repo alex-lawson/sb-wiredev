@@ -46,5 +46,6 @@
   "detectArea" : 2,
   "detectAreaOffset" : [1, 1],
 
-  "detectEntityTypes" : [ "projectile" ]
+  "detectEntityTypes" : [ "projectile" ],
+  "timeout" : 1
 }
