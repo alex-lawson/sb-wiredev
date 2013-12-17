@@ -55,7 +55,6 @@ end
 
 function onTick()
   --hook for derivative scripts (e.g. target.lua)
-  --not sure I like this one but we'll try it...
 end
 
 function validateEntities(entityIds)
