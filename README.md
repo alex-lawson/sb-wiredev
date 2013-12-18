@@ -30,7 +30,7 @@ Object / Script Status
     - TODO: should this be merged into switch.lua and controlled via configParameters?
     - NEED: properly implemented objects for this template (graphics, recipe, descriptions, costs)
 - Trapdoor
-    - created a simplified script /objects/wired/trapdoor/trapdoor.lua which is better suited than door.lua for unidirectional doors
+    - created a simplified script /objects/wired/trapdoor/trapdoor.lua which is better suited than door.lua for horizontal, unidirectional doors
     - TODO: generalize this to be more widely applicable, add more functionality/options
     - created animation /objects/wired/trapdoor/trapdoor.lua
     - TODO: possibly rename/reconfigure frames depending on desired framecount and naming convention
