@@ -1,7 +1,7 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "counterState" : {
+      "dataState" : {
         "default" : "0",
         "states" : {
           "off" : {
@@ -37,6 +37,12 @@
           "9" : {
             "frames" : 1
           },
+          "-" : {
+            "frames" : 1
+          },
+          "." : {
+            "frames" : 1
+          },
           "flipped.off" : {
             "frames" : 1
           },
@@ -69,6 +75,12 @@
           },
           "flipped.9" : {
             "frames" : 1
+          },
+          "flipped.-" : {
+            "frames" : 1
+          },
+          "flipped.." : {
+            "frames" : 1
           }
         }
       },
@@ -98,7 +110,7 @@
         },
 
         "partStates" : {
-          "counterState" : {
+          "dataState" : {
             "off" : {
               "properties" : {
                 "image" : "<partImage>:<color>.off"
@@ -152,6 +164,16 @@
             "9" : {
               "properties" : {
                 "image" : "<partImage>:<color>.9"
+              }
+            },
+            "-" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.-"
+              }
+            },
+            "." : {
+              "properties" : {
+                "image" : "<partImage>:<color>.."
               }
             },
             "flipped.off" : {
@@ -208,11 +230,21 @@
               "properties" : {
                 "image" : "<partImage>:<color>.flipped.9"
               }
+            },
+            "flipped.-" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.-"
+              }
+            },
+            "flipped.." : {
+              "properties" : {
+                "image" : "<partImage>:<color>.flipped.."
+              }
             }
           }
         }
       },
-      "display" : {
+      "frame" : {
         "properties" : {
           "centered" : false
         },
@@ -244,4 +276,58 @@
       }
     }
   }
+
+  //"particleEmitters" : {
+  //  "char0" : {
+  //    "emissionRate" : 15.0,
+  //    "particles" : [
+  //      {
+  //        "particle" : {
+  //          "type" : "text",
+  //          "size" : "0.9",
+  //          "text" : "0",
+  //          "color" : [210, 220, 255, 100],
+  //          "fade" : 0.9,
+  //          //"position" : [0.5, 0.46],
+  //          "timeToLive" : 0.3,
+  //          "layer" : "middle"
+  //        }
+  //      }
+  //    ]
+  //  },
+  //  "char1" : {
+  //    "emissionRate" : 15.0,
+  //    "particles" : [
+  //      {
+  //        "particle" : {
+  //          "type" : "text",
+  //          "size" : "0.9",
+  //          "text" : "1",
+  //          "color" : [210, 220, 255, 100],
+  //          "fade" : 0.9,
+  //          //"position" : [0, 0.46],
+  //          "timeToLive" : 0.3,
+  //          "layer" : "middle"
+  //        }
+  //      }
+  //    ]
+  //  },
+  //  "char2" : {
+  //    "emissionRate" : 15.0,
+  //    "particles" : [
+  //      {
+  //        "particle" : {
+  //          "type" : "text",
+  //          "size" : "0.9",
+  //          "text" : "2",
+  //          "color" : [210, 220, 255, 100],
+  //          "fade" : 0.9,
+  //          //"position" : [0, 0.46],
+  //          "timeToLive" : 0.3,
+  //          "layer" : "middle"
+  //        }
+  //      }
+  //    ]
+  //  }
+  //}
 }

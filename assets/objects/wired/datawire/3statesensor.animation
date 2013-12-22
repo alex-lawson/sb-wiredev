@@ -2,15 +2,15 @@
   "animatedParts" : {
     "stateTypes" : {
       "sensorState" : {
-        "default" : "off",
+        "default" : "min",
         "states" : {
-          "off" : {
+          "min" : {
             "frames" : 1
           },
-          "low" : {
+          "med" : {
             "frames" : 1
           },
-          "high" : {
+          "max" : {
             "frames" : 1
           }
         }
@@ -25,19 +25,19 @@
 
         "partStates" : {
           "sensorState" : {
-            "off" : {
+            "min" : {
               "properties" : {
-                "image" : "<partImage>:<color>.off"
+                "image" : "<partImage>:<color>.min"
               }
             },
-            "low" : {
+            "med" : {
               "properties" : {
-                "image" : "<partImage>:<color>.low"
+                "image" : "<partImage>:<color>.med"
               }
             },
-            "high" : {
+            "max" : {
               "properties" : {
-                "image" : "<partImage>:<color>.high"
+                "image" : "<partImage>:<color>.max"
               }
             }
           }

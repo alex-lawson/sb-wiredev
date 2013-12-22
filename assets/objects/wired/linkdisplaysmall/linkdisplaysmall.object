@@ -1,18 +1,18 @@
 {
-  "objectName" : "linkdisplay",
+  "objectName" : "linkdisplaysmall",
   "rarity" : "Common",
   "objectType" : "wire",
-  "description" : "Numbers With Friends",
-  "shortdescription" : "Linked Display",
+  "description" : "Numbers With Friends: Junior Edition",
+  "shortdescription" : "Small Linked Display",
   "race" : "generic",
   "category" : "wire",
-  "price" : "500",
-  "inventoryIcon" : "linkdisplayicon.png",
+  "price" : "300",
+  "inventoryIcon" : "linkdisplaysmallicon.png",
 
   "orientations" : [
     {
-      "image" : "frame.png:<color>.none",
-      "imagePosition" : [-8, -8],
+      "image" : "framesmall.png:<color>.none",
+      //"imagePosition" : [0,0],
 
       "spaceScan" : 0.1,
       "anchors" : [ "background" ]
@@ -25,14 +25,14 @@
   "animation" : "/objects/wired/datawire/linkdisplay.animation",
 
   "animationParts" : {
-    "frame" : "frame.png",
-    "digits" : "digits.png"
+    "frame" : "framesmall.png",
+    "digits" : "digitssmall.png"
   },
-  "animationPosition" : [-8, -8],
+  //"animationPosition" : [0, 0],
 
-  "inboundNodes" : [ [-1, 0] ],
+  "inboundNodes" : [ [0, 0] ],
 
-  "displaySize" : 2,
+  "displaySize" : 1,
 
   "countInterval" : 1
 

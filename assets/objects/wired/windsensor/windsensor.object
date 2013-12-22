@@ -1,46 +1,48 @@
 {
-  "objectName" : "lightsensor",
+  "objectName" : "windsensor",
   "objectType" : "wire",
   "rarity" : "Common",
-  "description" : "Activates the bottom node in dim light and the top node in bright light.",
-  "shortdescription" : "Light Sensor",
+  "description" : "Activates the bottom node in low wind and the top node in high wind.",
+  "shortdescription" : "Wind Sensor",
   "race" : "generic",
   "category" : "wire",
   "price" : "1000",
+  "scannable" : false,
+  "printable" : false,
 
-  "inventoryIcon" : "lightsensoricon.png",
+  "inventoryIcon" : "windsensoricon.png",
 
   "orientations" : [
     {
-      "image" : "lightsensor.png:default.min",
+      "image" : "windsensor.png:default.min",
       "imagePosition" : [0, 0],
 
       "spaceScan" : 0.1,
       "anchors" : [ "background" ]
     },
     {
-      "image" : "lightsensor.png:default.min",
+      "image" : "windsensor.png:default.min",
       "imagePosition" : [0, 0],
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     },
     {
-      "image" : "lightsensor.png:default.min",
+      "image" : "windsensor.png:default.min",
       "imagePosition" : [0, 0],
 
       "spaceScan" : 0.1,
       "anchors" : [ "top" ]
     },
     {
-      "image" : "lightsensor.png:default.min",
+      "image" : "windsensor.png:default.min",
       "imagePosition" : [0, 0],
 
       "spaceScan" : 0.1,
       "anchors" : [ "left" ]
     },
     {
-      "image" : "lightsensor.png:default.min",
+      "image" : "windsensor.png:default.min",
       "imagePosition" : [0, 0],
 
       "spaceScan" : 0.1,
@@ -48,17 +50,17 @@
     }
   ],
 
-  "scripts" : [ "/objects/wired/datawire/datawire.lua", "/objects/wired/datawire/3statesensor.lua", "lightsensor.lua" ],
-  "scriptDelta" : 10,
+  "scripts" : [ "/objects/wired/datawire/datawire.lua", "/objects/wired/datawire/3statesensor.lua", "windsensor.lua" ],
+  "scriptDelta" : 25,
 
   "animation" : "/objects/wired/datawire/3statesensor.animation",
   "animationParts" : {
-    "sensor" : "lightsensor.png"
+    "sensor" : "windsensor.png"
   },
   "animationPosition" : [0, 0],
 
   "outboundNodes" : [ [0, -1], [0, 1] ],
 
   "detectThresholdLow" : 1,
-  "detectThresholdHigh" : 40
+  "detectThresholdHigh" : 20
 }
