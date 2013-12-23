@@ -15,18 +15,18 @@ function onNodeConnectionChange()
 end
 
 function checkInboundNodes()
-  output(object.getInboundNodeLevel(0))
+  output(entity.getInboundNodeLevel(0))
 end
 
 function output(state)
   storage.state = state
   if state then
-    object.setAnimationState("doorState", "open")
-    object.playSound("openSounds")
-    object.setColliding(false)
+    entity.setAnimationState("doorState", "open")
+    entity.playSound("openSounds")
+    entity.setColliding(false)
   else
-    object.setAnimationState("doorState", "closed")
-    object.playSound("closeSounds")
-    object.setColliding(true)
+    entity.setAnimationState("doorState", "closed")
+    entity.playSound("closeSounds")
+    entity.setColliding(true)
   end
 end

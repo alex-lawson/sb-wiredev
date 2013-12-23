@@ -22,7 +22,7 @@ function queryNodes()
   --TODO: build table of connected object ids from wire queries
 
   --TEMPORARY: connect to objects above on node "1"
-  local entitiesAbove = world.entityLineQuery(object.position(), {object.position()[1], object.position()[2] + 10}, {
+  local entitiesAbove = world.entityLineQuery(entity.position(), {entity.position()[1], entity.position()[2] + 10}, {
       callScript = "isDataWireObject", callScriptArgs = { } })
 
   storage.connectedEntities[0] = entitiesAbove
@@ -40,6 +40,8 @@ function receiveData(args)
   local data = args[1]
   local nodeId = args[2]
   
+  --TODO: convert entityId to nodeId
+
   if validateData(data, nodeId) then
     onValidDataReceived(data, nodeId)
 

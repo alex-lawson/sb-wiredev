@@ -7,17 +7,17 @@ function init(args)
   updateLinkAnimationState()
 
   -- if storage.autoCountEnabled == nil then
-  --   storage.dataInterval = object.configParameter("countInterval")
+  --   storage.dataInterval = entity.configParameter("countInterval")
   --   storage.dataCooldown = storage.dataInterval
   --   storage.autoCountEnabled = true
   -- end
 
-  self.dataFormat = object.configParameter("dataFormat")
+  self.dataFormat = entity.configParameter("dataFormat")
   if self.dataFormat == nil then
     self.dataFormat = "%d"
   end
 
-  self.displaySize = object.configParameter("displaySize")
+  self.displaySize = entity.configParameter("displaySize")
   if self.displaySize == nil then
     --maybe no point to setting a default since this will totally break
     self.displaySize = 1
@@ -38,7 +38,7 @@ function findAdjacentSegments()
 end
 
 function isLinkedDisplayAt(pos)
-  return pos[1] == math.floor(object.position()[1]) and pos[2] == math.floor(object.position()[2])
+  return pos[1] == math.floor(entity.position()[1]) and pos[2] == math.floor(entity.position()[2])
 end
 
 function validateData(data, nodeId)
@@ -64,10 +64,10 @@ function setData(data)
 end
 
 function pingRight()
-  local entityIds = world.entityQuery({object.position()[1] + self.displaySize, object.position()[2]}, 1,
-     { callScript = "isLinkedDisplayAt", callScriptArgs = { {math.floor(object.position()[1] + self.displaySize), math.floor(object.position()[2]) }}, withoutEntityId = object.id()})
+  local entityIds = world.entityQuery({entity.position()[1] + self.displaySize, entity.position()[2]}, 1,
+     { callScript = "isLinkedDisplayAt", callScriptArgs = { {math.floor(entity.position()[1] + self.displaySize), math.floor(entity.position()[2]) }}, withoutEntityId = entity.id()})
   
-  -- world.logInfo(string.format("%d detected %d entities to the right", object.id(), #entityIds))
+  -- world.logInfo(string.format("%d detected %d entities to the right", entity.id(), #entityIds))
   -- for i, entityId in ipairs(entityIds) do
   --   world.logInfo(entityId)
   -- end
@@ -80,10 +80,10 @@ function pingRight()
 end
 
 function pingLeft()
-  local entityIds = world.entityQuery({object.position()[1] - self.displaySize, object.position()[2]}, 1,
-      { callScript = "isLinkedDisplayAt", callScriptArgs = { {math.floor(object.position()[1] - self.displaySize), math.floor(object.position()[2]) }}, withoutEntityId = object.id()})
+  local entityIds = world.entityQuery({entity.position()[1] - self.displaySize, entity.position()[2]}, 1,
+      { callScript = "isLinkedDisplayAt", callScriptArgs = { {math.floor(entity.position()[1] - self.displaySize), math.floor(entity.position()[2]) }}, withoutEntityId = entity.id()})
 
-  -- world.logInfo(string.format("%d detected %d entities to the left", object.id(), #entityIds))
+  -- world.logInfo(string.format("%d detected %d entities to the left", entity.id(), #entityIds))
   -- for i, entityId in ipairs(entityIds) do
   --   world.logInfo(entityId)
   -- end
@@ -113,33 +113,33 @@ end
 
 function updateLinkAnimationState()
   if storage.connectedRight and storage.connectedLeft then
-    object.setAnimationState("linkState", "both")
+    entity.setAnimationState("linkState", "both")
   elseif not storage.connectedRight and storage.connectedLeft then
-    if object.direction() == 1 then
-      object.setAnimationState("linkState", "left")
+    if entity.direction() == 1 then
+      entity.setAnimationState("linkState", "left")
     else
-      object.setAnimationState("linkState", "right")
+      entity.setAnimationState("linkState", "right")
     end
   elseif storage.connectedRight and not storage.connectedLeft then
-    if object.direction() == 1 then
-      object.setAnimationState("linkState", "right")
+    if entity.direction() == 1 then
+      entity.setAnimationState("linkState", "right")
     else
-      object.setAnimationState("linkState", "left")
+      entity.setAnimationState("linkState", "left")
     end
   else
-    object.setAnimationState("linkState", "none")
+    entity.setAnimationState("linkState", "none")
   end
 end
 
 function updateDisplay(newDisplayData)
   if newDisplayData and newDisplayData ~= "" then
-    if object.direction() == 1 then
-      object.setAnimationState("dataState", newDisplayData)
+    if entity.direction() == 1 then
+      entity.setAnimationState("dataState", newDisplayData)
     else
-      object.setAnimationState("dataState", "flipped."..newDisplayData)
+      entity.setAnimationState("dataState", "flipped."..newDisplayData)
     end
   else
-    object.setAnimationState("dataState", "off")
+    entity.setAnimationState("dataState", "off")
   end
 
   storage.currentDisplayData = newDisplayData
@@ -153,7 +153,7 @@ function main()
     --   if storage.data == nil then storage.data = 0 end
 
     --   --TODO: move this to separate counter object
-    --   storage.dataCooldown = storage.dataCooldown - object.dt()
+    --   storage.dataCooldown = storage.dataCooldown - entity.dt()
     --   if storage.dataCooldown <= 0 then
     --     storage.dataCooldown = storage.dataCooldown + storage.dataInterval
 
@@ -162,9 +162,9 @@ function main()
     -- end
 
     if not storage.connectedRight then
-      world.logInfo(storage.data)
+      --world.logInfo(storage.data)
       dataStr = string.format(self.dataFormat, storage.data)
-      world.logInfo(dataStr)
+      --world.logInfo(dataStr)
       takeOneAndPassToYourLeft({data = storage.data, dataString = dataStr:sub(1, #dataStr)})
     end
   end

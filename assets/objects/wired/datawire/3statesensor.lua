@@ -1,6 +1,6 @@
 function init(args)
-  self.detectThresholdHigh = object.configParameter("detectThresholdHigh")
-  self.detectThresholdLow = object.configParameter("detectThresholdLow")
+  self.detectThresholdHigh = entity.configParameter("detectThresholdHigh")
+  self.detectThresholdLow = entity.configParameter("detectThresholdLow")
 
   queryNodes()
 end
@@ -17,17 +17,17 @@ function main(args)
   sendData(sample, 0)
 
   if sample >= self.detectThresholdLow then
-    object.setOutboundNodeLevel(0, true)
-    object.setAnimationState("sensorState", "med")
+    entity.setOutboundNodeLevel(0, true)
+    entity.setAnimationState("sensorState", "med")
   else
-    object.setOutboundNodeLevel(0, false)
-    object.setAnimationState("sensorState", "min")
+    entity.setOutboundNodeLevel(0, false)
+    entity.setAnimationState("sensorState", "min")
   end
 
   if sample >= self.detectThresholdHigh then
-    object.setOutboundNodeLevel(1, true)
-    object.setAnimationState("sensorState", "max")
+    entity.setOutboundNodeLevel(1, true)
+    entity.setAnimationState("sensorState", "max")
   else
-    object.setOutboundNodeLevel(1, false)
+    entity.setOutboundNodeLevel(1, false)
   end
 end
