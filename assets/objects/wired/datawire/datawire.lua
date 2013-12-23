@@ -1,10 +1,3 @@
--- function init(args)
-  
-
---   --call object-specific initialization
---   objInit(args)
--- end
-
 function isDataWireObject()
   return true
 end
@@ -14,35 +7,58 @@ function onInboundNodeChange(args)
 end
 
 function onNodeConnectionChange()
+  world.logInfo("in onNodeConnectionChange()")
   queryNodes()
 end
 
 function queryNodes()
-  storage.connectedEntities = {}
-  --TODO: build table of connected object ids from wire queries
+  storage.outboundConnections = {}
+  local i = 0
+  while i < entity.outboundNodeCount() do
+    storage.outboundConnections[i] = entity.getOutboundNodeIds(i)
+    i = i + 1
+  end
 
-  --TEMPORARY: connect to objects above on node "1"
-  local entitiesAbove = world.entityLineQuery(entity.position(), {entity.position()[1], entity.position()[2] + 10}, {
-      callScript = "isDataWireObject", callScriptArgs = { } })
+  storage.inboundConnections = {}
+  local entityIds
+  i = 0
+  while i < entity.inboundNodeCount() do
+    entityIds = entity.getInboundNodeIds(i)
+    for j, entityId in ipairs(entityIds) do
+      storage.inboundConnections[entityId] = i
+    end
+    i = i + 1
+  end
 
-  storage.connectedEntities[0] = entitiesAbove
+  -- world.logInfo(string.format("%s finished querying %d outbound and %d inbound nodes", entity.configParameter("objectName"), entity.outboundNodeCount(), entity.inboundNodeCount()))
+  -- world.logInfo(storage.outboundConnections)
+  -- world.logInfo(storage.inboundConnections)
 end
 
 function sendData(data, nodeId)
-  if storage.connectedEntities[nodeId] and #storage.connectedEntities[nodeId] > 0 then 
-    for i, entityId in ipairs(storage.connectedEntities[nodeId]) do
-      world.callScriptedEntity(entityId, "receiveData", { data, nodeId })
+  if nodeId == "all" then
+    local i = 0
+    while i < entity.outboundNodeCount() do
+      sendData(data, i)
+      i = i + 1
+    end
+  else
+    if storage.outboundConnections[nodeId] and #storage.outboundConnections[nodeId] > 0 then 
+      for i, entityId in ipairs(storage.outboundConnections[nodeId]) do
+        world.callScriptedEntity(entityId, "receiveData", { data, entity.id() })
+      end
     end
   end
 end
 
 function receiveData(args)
   local data = args[1]
-  local nodeId = args[2]
+  local sourceEntityId = args[2]
   
-  --TODO: convert entityId to nodeId
+  --convert entityId to nodeId
+  local nodeId = storage.inboundConnections[sourceEntityId]
 
-  if validateData(data, nodeId) then
+  if nodeId ~= nil and validateData(data, nodeId) then
     onValidDataReceived(data, nodeId)
 
     --TODO: remove for production
@@ -50,8 +66,8 @@ function receiveData(args)
     -- world.logInfo(data)
   else
     --TODO: remove for production
-    world.logInfo(string.format("DataWire: object received INVALID data"))
-    world.logInfo(data)
+    --world.logInfo(string.format("DataWire: object received INVALID data"))
+    --world.logInfo(data)
   end
 
   return true
@@ -65,10 +81,3 @@ end
 function onValidDataReceived(data, nodeId)
   --to be implemented by object
 end
-
--- function main()
-
-
---   --call object-specific updates
---   --objMain()
--- end

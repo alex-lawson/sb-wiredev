@@ -1,8 +1,15 @@
-function init(args)
-  self.detectThresholdHigh = entity.configParameter("detectThresholdHigh")
-  self.detectThresholdLow = entity.configParameter("detectThresholdLow")
+function init(virtual)
+  if not virtual then
+    self.detectThresholdHigh = entity.configParameter("detectThresholdHigh")
+    self.detectThresholdLow = entity.configParameter("detectThresholdLow")
+    self.initialized = false
+  end
+end
 
+function initInWorld()
+  world.logInfo(string.format("%s initializing in world", entity.configParameter("objectName")))
   queryNodes()
+  self.initialized = true
 end
 
 function getSample()
@@ -11,10 +18,12 @@ function getSample()
 end
 
 function main(args)
-  queryNodes()
+  if not self.initialized then
+    initInWorld()
+  end
 
   local sample = getSample()
-  sendData(sample, 0)
+  sendData(sample, "all")
 
   if sample >= self.detectThresholdLow then
     entity.setOutboundNodeLevel(0, true)

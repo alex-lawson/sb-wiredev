@@ -12,7 +12,6 @@
   "orientations" : [
     {
       "image" : "framesmall.png:<color>.none",
-      //"imagePosition" : [0,0],
 
       "spaceScan" : 0.1,
       "anchors" : [ "background" ]
@@ -28,7 +27,6 @@
     "frame" : "framesmall.png",
     "digits" : "digitssmall.png"
   },
-  //"animationPosition" : [0, 0],
 
   "inboundNodes" : [ [0, 0] ],
 
