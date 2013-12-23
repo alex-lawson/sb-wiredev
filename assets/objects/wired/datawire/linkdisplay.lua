@@ -2,10 +2,6 @@ function init(args)
   -- self.displayCharSet = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-"}
   -- self.linkStates = {"none", "left", "right", "both"}
 
-  if object.direction() == -1 then
-    object.setFlipped(true)
-  end
-
   storage.connectedRight = false
   storage.connectedLeft = false
   updateLinkAnimationState()
