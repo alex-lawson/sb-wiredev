@@ -15,17 +15,11 @@ function init(virtual)
     end
 
     self.initialized = false
-
-    -- if storage.autoCountEnabled == nil then
-    --   storage.dataInterval = entity.configParameter("countInterval")
-    --   storage.dataCooldown = storage.dataInterval
-    --   storage.autoCountEnabled = true
-    -- end
   end
 end
 
 function initInWorld()
-  world.logInfo(string.format("%s initializing in world", entity.configParameter("objectName")))
+  --world.logInfo(string.format("%s initializing in world", entity.configParameter("objectName")))
   queryNodes()
   findAdjacentSegments()
   self.initialized = true
@@ -182,24 +176,8 @@ function main()
   if not self.initialized then
     initInWorld()
   end
-  
-  -- if storage.connectedLeft == 0 or storage.connectedRight == 0 then
-  --   findAdjacentSegments()
-  -- end
 
   if storage.data then
-    -- if storage.autoCountEnabled then
-    --   if storage.data == nil then storage.data = 0 end
-
-    --   --TODO: move this to separate counter object
-    --   storage.dataCooldown = storage.dataCooldown - entity.dt()
-    --   if storage.dataCooldown <= 0 then
-    --     storage.dataCooldown = storage.dataCooldown + storage.dataInterval
-
-    --     storage.data = (storage.data - 1)-- % 3
-    --   end
-    -- end
-
     if not storage.connectedRight then
       dataStr = string.format(self.dataFormat, storage.data)
       takeOneAndPassToYourLeft({data = storage.data, dataString = dataStr:sub(1, #dataStr)})

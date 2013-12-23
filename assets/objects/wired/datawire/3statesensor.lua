@@ -7,7 +7,7 @@ function init(virtual)
 end
 
 function initInWorld()
-  world.logInfo(string.format("%s initializing in world", entity.configParameter("objectName")))
+  --world.logInfo(string.format("%s initializing in world", entity.configParameter("objectName")))
   queryNodes()
   self.initialized = true
 end
