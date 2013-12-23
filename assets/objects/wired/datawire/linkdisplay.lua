@@ -1,26 +1,36 @@
-function init(args)
+function init(virtual)
   -- self.displayCharSet = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-"}
   -- self.linkStates = {"none", "left", "right", "both"}
 
-  storage.connectedRight = false
-  storage.connectedLeft = false
-  updateLinkAnimationState()
+  if not virtual then
+    self.dataFormat = entity.configParameter("dataFormat")
+    if self.dataFormat == nil then
+      self.dataFormat = "%d"
+    end
 
-  -- if storage.autoCountEnabled == nil then
-  --   storage.dataInterval = entity.configParameter("countInterval")
-  --   storage.dataCooldown = storage.dataInterval
-  --   storage.autoCountEnabled = true
-  -- end
+    self.displaySize = entity.configParameter("displaySize")
+    if self.displaySize == nil then
+      --maybe no point to setting a default since this will totally break
+      self.displaySize = 1
+    end
 
-  self.dataFormat = entity.configParameter("dataFormat")
-  if self.dataFormat == nil then
-    self.dataFormat = "%d"
+    findAdjacentSegments()
+
+    -- if storage.autoCountEnabled == nil then
+    --   storage.dataInterval = entity.configParameter("countInterval")
+    --   storage.dataCooldown = storage.dataInterval
+    --   storage.autoCountEnabled = true
+    -- end
+  end
+end
+
+function die()
+  if storage.connectedRight then
+    world.callScriptedEntity(storage.connectedRight, "disconnectLeft")
   end
 
-  self.displaySize = entity.configParameter("displaySize")
-  if self.displaySize == nil then
-    --maybe no point to setting a default since this will totally break
-    self.displaySize = 1
+  if storage.connectedLeft then
+    world.callScriptedEntity(storage.connectedLeft, "disconnectRight")
   end
 end
 
@@ -37,8 +47,34 @@ function findAdjacentSegments()
   end
 end
 
-function isLinkedDisplayAt(pos)
-  return pos[1] == math.floor(entity.position()[1]) and pos[2] == math.floor(entity.position()[2])
+function disconnectLeft()
+  storage.connectedLeft = nil
+  updateLinkAnimationState()
+end
+
+function disconnectRight()
+  storage.connectedRight = nil
+  updateLinkAnimationState()
+end
+
+function isLinkedDisplayToRight(pos, displaySize, entityId)
+  if pos[1] == math.floor(entity.position()[1]) and pos[2] == math.floor(entity.position()[2]) and displaySize == self.displaySize then
+    storage.connectedLeft = entityId
+    updateLinkAnimationState()
+    return true
+  else
+    return false
+  end
+end
+
+function isLinkedDisplayToLeft(pos, displaySize, entityId)
+  if pos[1] == math.floor(entity.position()[1]) and pos[2] == math.floor(entity.position()[2]) and displaySize == self.displaySize then
+    storage.connectedRight = entityId
+    updateLinkAnimationState()
+    return true
+  else
+    return false
+  end
 end
 
 function validateData(data, nodeId)
@@ -65,12 +101,7 @@ end
 
 function pingRight()
   local entityIds = world.entityQuery({entity.position()[1] + self.displaySize, entity.position()[2]}, 1,
-     { callScript = "isLinkedDisplayAt", callScriptArgs = { {math.floor(entity.position()[1] + self.displaySize), math.floor(entity.position()[2]) }}, withoutEntityId = entity.id()})
-  
-  -- world.logInfo(string.format("%d detected %d entities to the right", entity.id(), #entityIds))
-  -- for i, entityId in ipairs(entityIds) do
-  --   world.logInfo(entityId)
-  -- end
+     { callScript = "isLinkedDisplayToRight", callScriptArgs = { {math.floor(entity.position()[1] + self.displaySize), math.floor(entity.position()[2])}, self.displaySize, entity.id() }, withoutEntityId = entity.id()})
 
   if #entityIds == 1 then
     storage.connectedRight = entityIds[1]
@@ -81,12 +112,7 @@ end
 
 function pingLeft()
   local entityIds = world.entityQuery({entity.position()[1] - self.displaySize, entity.position()[2]}, 1,
-      { callScript = "isLinkedDisplayAt", callScriptArgs = { {math.floor(entity.position()[1] - self.displaySize), math.floor(entity.position()[2]) }}, withoutEntityId = entity.id()})
-
-  -- world.logInfo(string.format("%d detected %d entities to the left", entity.id(), #entityIds))
-  -- for i, entityId in ipairs(entityIds) do
-  --   world.logInfo(entityId)
-  -- end
+      { callScript = "isLinkedDisplayToLeft", callScriptArgs = { {math.floor(entity.position()[1] - self.displaySize), math.floor(entity.position()[2])}, self.displaySize, entity.id() }, withoutEntityId = entity.id()})
 
   if #entityIds == 1 then
     storage.connectedLeft = entityIds[1]
@@ -146,7 +172,9 @@ function updateDisplay(newDisplayData)
 end
 
 function main()
-  findAdjacentSegments()
+  if storage.connectedLeft == 0 or storage.connectedRight == 0 then
+    findAdjacentSegments()
+  end
 
   if storage.data then
     -- if storage.autoCountEnabled then
@@ -162,9 +190,7 @@ function main()
     -- end
 
     if not storage.connectedRight then
-      --world.logInfo(storage.data)
       dataStr = string.format(self.dataFormat, storage.data)
-      --world.logInfo(dataStr)
       takeOneAndPassToYourLeft({data = storage.data, dataString = dataStr:sub(1, #dataStr)})
     end
   end
